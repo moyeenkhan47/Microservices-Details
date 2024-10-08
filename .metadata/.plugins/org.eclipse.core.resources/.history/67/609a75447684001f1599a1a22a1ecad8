@@ -1,0 +1,13 @@
+package com.user.model;
+
+import java.util.Date;
+
+import lombok.Data;
+
+@Data
+public class ErrorDetails {
+	private String message;
+	private String Description;
+	private Date date;
+
+}

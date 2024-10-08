@@ -1,0 +1,21 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: ApiGateway
+  cloud:
+    gateway:
+      routes:
+        - id: USER-SERVICE
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user/**
+        - id: PRODUCT-SERVICE
+          uri: lb://PRODUCT-SERVICE
+          predicates:
+            - Path=/product/**
+        - id: ORDER-SERVICE
+          uri: lb://ORDER-SERVICE
+          predicates:
+            - Path=/order/**

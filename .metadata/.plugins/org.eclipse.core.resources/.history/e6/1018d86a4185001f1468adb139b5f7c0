@@ -1,0 +1,10 @@
+package com.user.service;
+
+import org.springframework.cloud.openfeign.FeignClient;
+
+@FeignClient(name = "order-service") // name of the service registered with Eureka
+public interface OrderServiceFeignClient {
+
+    @GetMapping("/api/users/{userId}")
+    UserDTO getUserById(@PathVariable("userId") Long userId);
+}

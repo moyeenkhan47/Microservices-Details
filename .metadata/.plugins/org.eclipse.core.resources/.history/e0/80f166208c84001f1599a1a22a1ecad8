@@ -1,0 +1,12 @@
+package com.product.service;
+
+import java.util.List;
+
+import com.product.model.Product;
+
+public interface ProductService {
+	public Product createProduct(Product product);
+	public Product getProductById(String pid);
+	public List<Product> getAllProduct();
+
+}

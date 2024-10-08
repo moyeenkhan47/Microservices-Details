@@ -1,0 +1,11 @@
+package com.product.configuration;
+
+import org.springframework.cloud.openfeign.FeignClient;
+
+import com.product.model.OrderReport;
+
+@FeignClient(name="Order-Service")
+public interface OrderClient {
+	public OrderReport order (OrderReport orderReport);
+
+}

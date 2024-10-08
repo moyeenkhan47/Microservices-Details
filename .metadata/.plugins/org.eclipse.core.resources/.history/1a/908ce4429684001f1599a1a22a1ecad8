@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: ProductService
+
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521:xe
+    username: c##micro
+    password: micro
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    
+server:
+     port: 8082
+     
+eureka:
+     instance:
+            client:
+                 serverUrl: defaultZone=http://localhost:8761/eureka/

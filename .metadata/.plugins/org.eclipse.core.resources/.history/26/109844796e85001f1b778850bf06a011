@@ -1,0 +1,15 @@
+server:
+  port: 8888  # Port for the Config Server
+
+spring:
+  application:
+    name: config-server  # Name of the application
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/moyeenkhan47/ConfigServer  # URI of the Git repository
+          clone-on-start: true
+          label: main 
+          default-profile: default
+          fail-fast: true 

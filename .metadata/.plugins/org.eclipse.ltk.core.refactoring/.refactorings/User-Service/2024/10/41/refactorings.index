@@ -1,0 +1,9 @@
+1728280906475	Delete element
+1728304753484	Delete element
+1728370092188	Rename type 'UserServiceFeignClient'
+1728370353203	Delete element
+1728377866132	Rename package 'com.user.model'
+1728377883185	Rename package 'com.user.dto'
+1728377954627	Rename type 'UserDTO'
+1728378852029	Move compilation unit
+1728378886501	Rename type 'ProductServiceFeignClient'

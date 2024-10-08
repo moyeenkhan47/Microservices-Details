@@ -1,0 +1,17 @@
+package com.product.model;
+
+import jakarta.persistence.Entity;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class Product {
+	private int pid;
+	private String pName;
+	private double price;
+
+}
