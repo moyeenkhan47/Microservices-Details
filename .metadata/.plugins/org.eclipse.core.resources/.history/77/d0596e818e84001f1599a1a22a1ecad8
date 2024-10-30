@@ -1,5 +1,0 @@
-package com.order.model.repository;
-
-public interface OrderRepository {
-
-}

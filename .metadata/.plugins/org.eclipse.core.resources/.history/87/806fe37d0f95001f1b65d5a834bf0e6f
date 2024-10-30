@@ -1,0 +1,36 @@
+package com.user.configuration;
+
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.servers.Server;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import java.util.List;
+
+@Configuration
+public class OpenApiConfig {
+
+    @Bean
+    public OpenAPI customOpenAPI() {
+        // Define multiple servers
+        Server userServer = new Server();
+        userServer.setUrl("https://localhost:8081");
+        userServer.setDescription("User server");
+
+        Server productServer = new Server();
+        productServer.setUrl("https://localhost:8082");
+        productServer.setDescription("Product server");
+
+        Server  orderServer = new Server();
+      orderServer.setUrl("https://localhost:8083");
+      orderServer.setDescription("Order server");
+
+        // Create OpenAPI instance and add info and servers
+        return new OpenAPI()
+                .info(new Info().title("Microservices Api")
+                                .version("1.0.0")
+                                .description("A sample API with multiple server configurations"))
+                .servers(List.of(userServer, productServer, orderServer));
+    }
+}

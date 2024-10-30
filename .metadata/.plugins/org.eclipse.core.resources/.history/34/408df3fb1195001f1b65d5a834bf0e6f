@@ -1,0 +1,56 @@
+spring:
+  application:
+    name: User-Service
+  datasource:
+    url: jdbc:mysql://localhost:3306/microservices
+    username: root
+    password: Abdul@123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+  config:
+    import: optional:configserver:http://localhost:8888
+  cloud:
+    config:
+      uri: http://localhost:8888
+  doc:
+    api-docs:
+      enabled: true
+    swagger-ui:
+      enabled: true
+      
+      
+springdoc:
+  swagger-ui:
+    enabled: true
+server:
+  port: 8081
+
+# Eureka instance configuration (commented out)
+# eureka:
+#   instance:
+#     client:
+#       serverUrl:
+#         defaultZone: http://localhost:8761/eureka/
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      userService:
+        slidingWindowSize: 10        # Number of requests in the window
+        failureRateThreshold: 50      # % of failures before tripping the circuit
+        waitDurationInOpenState: 60s  # Time to wait before moving from open to half-open state
+        permittedNumberOfCallsInHalfOpenState: 3  # How many calls to try when half-open
+  ratelimiter:
+    instances:
+      userServiceRateLimiter:
+        limitForPeriod: 5              # Number of requests allowed in a period
+        limitRefreshPeriod: 10s        # Refresh period for the rate limit
+        timeoutDuration: 1s            # Max wait time for the next available request
+        
+       

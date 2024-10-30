@@ -12,23 +12,27 @@ import com.product.model.OrderReport;
 import com.product.repository.ProductRepository;
 import com.product.service.ProductService;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
-public class ProductServiceImpl  implements ProductService{
-	@Autowired
+@RequiredArgsConstructor
+public class ProductServiceImpl implements ProductService {
+
 	private ProductRepository productRepository;
-	@Autowired
+
 	private OrderClient orderClient;
 
 	@Override
 	public Product createProduct(Product product) {
-		
-	return productRepository.save(product);
+
+		return productRepository.save(product);
 	}
 
 	@Override
 	public Product getProductById(String productId) {
-	return productRepository.findById(productId).orElseThrow(()->new ResourceNotFoundException("Resource with ID " + productId + " not found"));
-	
+		return productRepository.findById(productId)
+				.orElseThrow(() -> new ResourceNotFoundException("Resource with ID " + productId + " not found"));
+
 	}
 
 	@Override

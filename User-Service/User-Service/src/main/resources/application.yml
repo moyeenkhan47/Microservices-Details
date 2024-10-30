@@ -23,6 +23,8 @@ spring:
       enabled: true
     swagger-ui:
       enabled: true
+      
+      
 
 server:
   port: 8081
@@ -38,14 +40,15 @@ resilience4j:
   circuitbreaker:
     instances:
       userService:
-        slidingWindowSize: 10
-        failureRateThreshold: 50
-        waitDurationInOpenState: 1000
-        permittedNumberOfCallsInHalfOpenState: 3
-        minimumNumberOfCalls: 5
+        slidingWindowSize: 10        # Number of requests in the window
+        failureRateThreshold: 50      # % of failures before tripping the circuit
+        waitDurationInOpenState: 60s  # Time to wait before moving from open to half-open state
+        permittedNumberOfCallsInHalfOpenState: 3  # How many calls to try when half-open
   ratelimiter:
     instances:
-      userService:
-        limitForPeriod: 15
-        limitRefreshPeriod: 2000
-        timeoutDuration: 1000
+      userServiceRateLimiter:
+        limitForPeriod: 5              # Number of requests allowed in a period
+        limitRefreshPeriod: 10s        # Refresh period for the rate limit
+        timeoutDuration: 1s            # Max wait time for the next available request
+        
+       
